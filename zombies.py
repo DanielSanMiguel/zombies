@@ -16,17 +16,20 @@ if 'contador_zombies' not in st.session_state:
 if 'contador_fallos' not in st.session_state:
     st.session_state['contador_fallos'] = 0
 
-b_start = st.button('START')
+
+
+
+
+h1,h2,h3 = st.columns(3)
+h3.header(':rainbow[ZOMBIES]')
+b_start = h1.button('START')
+b0 = h2.button('RESTART')
 if b_start:
     st.session_state.start = True
-b0 = st.button('RESTART')
 if b0:
     st.session_state['contador_zombies'] = 0
     st.session_state['contador_fallos'] = 0
     st.session_state['start'] = False
-
-h1,h2,h3 = st.columns(3)
-h2.header(':rainbow[ZOMBIES]')
 cont = st.empty()
 tablero = cont.container()
 c1,c2,c3,c4,c5,c6 = tablero.columns(6)
@@ -40,12 +43,12 @@ k6 = c6.empty()
 botones = [':zombie:',':man:', ':boy:',':woman:', ':girl:', ':car:']
 keys = {':zombie:':1, ':man:':2, ':boy:':3, ':woman:':4, ':girl:':5, ':car:':6}
 iconos = random.sample(botones, len(botones))
-b1 = k1.button(iconos[0], key=keys[iconos[0]], use_container_width=True)
-b2 = k2.button(iconos[1], key=keys[iconos[1]], use_container_width=True)
-b3 = k3.button(iconos[2], key=keys[iconos[2]], use_container_width=True)
-b4 = k4.button(iconos[3], key=keys[iconos[3]], use_container_width=True)
-b5 = k5.button(iconos[4], key=keys[iconos[4]], use_container_width=True)
-b6 = k6.button(iconos[5], key=keys[iconos[5]], use_container_width=True)
+b1 = k1.button(iconos[0], key=keys[iconos[0]],use_container_width=True )
+b2 = k2.button(iconos[1], key=keys[iconos[1]],use_container_width=True )
+b3 = k3.button(iconos[2], key=keys[iconos[2]],use_container_width=True )
+b4 = k4.button(iconos[3], key=keys[iconos[3]],use_container_width=True )
+b5 = k5.button(iconos[4], key=keys[iconos[4]],use_container_width=True )
+b6 = k6.button(iconos[5], key=keys[iconos[5]],use_container_width=True )
 
 resultado = 'Dispara'
 if b1: 
