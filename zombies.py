@@ -94,7 +94,7 @@ if b6:
 if 'contador' not in st.session_state:
     st.session_state.contador = 0
 
-if st.session_state['contador_fallos'] > 9:
+if st.session_state['contador_fallos'] >= 10:
     st.write('TE HAN CONVERTIDO EN ZOMBI')
     st.write('Tu puntuación: ', st.session_state.contador_zombies)
     st.stop()
@@ -106,26 +106,16 @@ if (b1 or b2 or b3 or b4 or b5 or b6) and resultado != ':zombie: Muerto':
     st.session_state.contador_fallos += 1
 
 
-try:
-    st.write('Zombies muertos',st.session_state.contador_zombies)
-    st.write('Fallos',st.session_state.contador_fallos)
-except:
-    pass
+
+st.write('Zombies muertos',st.session_state.contador_zombies)
+st.write('Fallos',st.session_state.contador_fallos)
+
+t1=st.session_state.contador_zombies
+tiempo = 40/(t1+1)
 
 if st.session_state.start==True:
-    if st.session_state['contador_fallos'] > 120:
-        time.sleep(0.1)
-    elif st.session_state['contador_fallos'] > 100:
-        time.sleep(0.3)
-    elif st.session_state['contador_fallos'] > 80:
-        time.sleep(0.5)
-    elif st.session_state['contador_fallos'] > 60:
-        time.sleep(0.7)   
-    elif st.session_state['contador_fallos'] > 40:
-        time.sleep(0.9)
-    elif st.session_state['contador_fallos'] > 20:
-        time.sleep(1.3)
-    elif st.session_state['contador_fallos'] < 10:
-        time.sleep(1.5)
+    
+    time.sleep(tiempo)
     st.session_state['contador_fallos'] += 1
     st.rerun()
+
