@@ -21,9 +21,9 @@ if 'contador_fallos' not in st.session_state:
 
 
 h1,h2,h3 = st.columns(3)
-h3.header(':rainbow[ZOMBIES]')
+h2.header(':rainbow[ZOMBIES]')
 b_start = h1.button('START')
-b0 = h2.button('RESTART')
+b0 = h1.button('RESTART')
 if b_start:
     st.session_state.start = True
 if b0:
