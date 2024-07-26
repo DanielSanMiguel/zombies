@@ -111,6 +111,6 @@ try:
 except:
     pass
 if st.session_state.start==True:
-    time.sleep(2)
+    time.sleep(1.8)
     st.session_state['contador_fallos'] += 1
     st.rerun()
