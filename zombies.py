@@ -9,6 +9,14 @@ import streamlit as st
 import random
 import time
 
+st.markdown(
+    """
+    <style>
+    div.stButton :nth-child(1)  {background-color: gold !important;}
+    """,
+    unsafe_allow_html=True
+    )
+
 if 'start' not in st.session_state:
     st.session_state['start'] = False
 if 'contador_zombies' not in st.session_state:
@@ -18,18 +26,18 @@ if 'contador_fallos' not in st.session_state:
 
 h1,h2,h3 = st.columns(3)
 h2.header(':rainbow[ZOMBIES]')
-b_start = h1.button('START')
-b0 = h1.button('RESTART')
+b_start = h1.button('START',key='b_start')
+
 if b_start:
-    st.session_state.start = True
-if b0:
     st.session_state['contador_zombies'] = 0
     st.session_state['contador_fallos'] = 0
-    st.session_state['start'] = False
+    st.session_state.start = True
+
 
 cont = st.empty()
 tablero = cont.container()
-c1,c2,c3,c4,c5,c6 = tablero.columns(6)
+c1,c2,c3, = tablero.columns(3)
+c4,c5,c6 = tablero.columns(3)
 k1 = c1.empty()
 k2 = c2.empty()
 k3 = c3.empty()
@@ -111,7 +119,7 @@ st.write('Zombies muertos',st.session_state.contador_zombies)
 st.write('Fallos',st.session_state.contador_fallos)
 
 t1=st.session_state.contador_zombies
-tiempo = 40/(t1+1)
+tiempo = 40/(t1+0.1)
 
 if st.session_state.start==True:
     
