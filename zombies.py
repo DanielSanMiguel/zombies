@@ -111,6 +111,15 @@ try:
 except:
     pass
 if st.session_state.start==True:
-    time.sleep(1.8)
+    if st.session_state['contador_fallos'] < 20:
+        time.sleep(1.8)
+    elif st.session_state['contador_fallos'] < 50:
+        time.sleep(1.6)
+    elif st.session_state['contador_fallos'] < 75:
+        time.sleep(1.4)
+    elif st.session_state['contador_fallos'] < 100:
+        time.sleep(1.2)    
+    elif st.session_state['contador_fallos'] < 150:
+        time.sleep(1)
     st.session_state['contador_fallos'] += 1
     st.rerun()
