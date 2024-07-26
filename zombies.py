@@ -16,10 +16,6 @@ if 'contador_zombies' not in st.session_state:
 if 'contador_fallos' not in st.session_state:
     st.session_state['contador_fallos'] = 0
 
-
-
-
-
 h1,h2,h3 = st.columns(3)
 h2.header(':rainbow[ZOMBIES]')
 b_start = h1.button('START')
@@ -30,6 +26,7 @@ if b0:
     st.session_state['contador_zombies'] = 0
     st.session_state['contador_fallos'] = 0
     st.session_state['start'] = False
+
 cont = st.empty()
 tablero = cont.container()
 c1,c2,c3,c4,c5,c6 = tablero.columns(6)
@@ -50,7 +47,6 @@ b4 = k4.button(iconos[3], key=keys[iconos[3]],use_container_width=True )
 b5 = k5.button(iconos[4], key=keys[iconos[4]],use_container_width=True )
 b6 = k6.button(iconos[5], key=keys[iconos[5]],use_container_width=True )
 
-resultado = 'Dispara'
 if b1: 
     if iconos[0] == ':zombie:':
         resultado = ':zombie: Muerto'
@@ -94,38 +90,46 @@ if b6:
         resultado = 'Fallaste'
     else:
         resultado = 'Te has cargado un humano'
+
 if 'contador' not in st.session_state:
     st.session_state.contador = 0
+
 if st.session_state['contador_fallos'] > 9:
     st.write('TE HAN CONVERTIDO EN ZOMBI')
     st.write('Tu puntuación: ', st.session_state.contador_zombies)
     st.stop()
+
 if (b1 or b2 or b3 or b4 or b5 or b6) and resultado == ':zombie: Muerto':
     st.session_state.contador_zombies += 1
+
 if (b1 or b2 or b3 or b4 or b5 or b6) and resultado != ':zombie: Muerto':
     st.session_state.contador_fallos += 1
-st.write(resultado)
+
+
 try:
     st.write('Zombies muertos',st.session_state.contador_zombies)
     st.write('Fallos',st.session_state.contador_fallos)
 except:
     pass
-if st.session_state.start==True:
+def tiempo():
     if st.session_state['contador_fallos'] < 20:
-        time.sleep(1.8)
+        tiempo = 1
+    elif st.session_state['contador_fallos'] < 25:
+        tiempo = 0.8
+    elif st.session_state['contador_fallos'] < 30:
+        tiempo = 0.7
+    elif st.session_state['contador_fallos'] < 35:
+        tiempo = 0.6   
+    elif st.session_state['contador_fallos'] < 40:
+        tiempo = 0.5
+    elif st.session_state['contador_fallos'] < 45:
+        tiempo = 0.4
     elif st.session_state['contador_fallos'] < 50:
-        time.sleep(1.6)
-    elif st.session_state['contador_fallos'] < 75:
-        time.sleep(1.4)
-    elif st.session_state['contador_fallos'] < 100:
-        time.sleep(1.2)    
-    elif st.session_state['contador_fallos'] < 150:
-        time.sleep(1)
-    elif st.session_state['contador_fallos'] < 175:
-        time.sleep(0.8)
-    elif st.session_state['contador_fallos'] < 200:
-        time.sleep(0.6)
-    elif st.session_state['contador_fallos'] < 250:
-        time.sleep(0.4)
+        tiempo = 0.3
+    elif st.session_state['contador_fallos'] < 55:
+        tiempo = 0.2
+    return tiempo
+if st.session_state.start==True:
+    time.sleep(tiempo())
     st.session_state['contador_fallos'] += 1
     st.rerun()
