@@ -112,17 +112,17 @@ try:
 except:
     pass
 def tiempo():
-    if st.session_state['contador_fallos'] < 120:
+    if st.session_state['contador_fallos'] > 120:
         tiempo = 0.1
-    elif st.session_state['contador_fallos'] < 100:
+    elif st.session_state['contador_fallos'] > 100:
         tiempo = 0.2
-    elif st.session_state['contador_fallos'] < 80:
+    elif st.session_state['contador_fallos'] > 80:
         tiempo = 0.4
-    elif st.session_state['contador_fallos'] < 60:
+    elif st.session_state['contador_fallos'] > 60:
         tiempo = 0.6   
-    elif st.session_state['contador_fallos'] < 40:
+    elif st.session_state['contador_fallos'] > 40:
         tiempo = 0.6
-    elif st.session_state['contador_fallos'] < 20:
+    elif st.session_state['contador_fallos'] > 20:
         tiempo = 0.8
     elif st.session_state['contador_fallos'] < 10:
         tiempo = 1
