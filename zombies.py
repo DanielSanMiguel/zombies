@@ -111,23 +111,21 @@ try:
     st.write('Fallos',st.session_state.contador_fallos)
 except:
     pass
-def tiempo():
-    if st.session_state['contador_fallos'] > 120:
-        tiempo = 0.1
-    elif st.session_state['contador_fallos'] > 100:
-        tiempo = 0.3
-    elif st.session_state['contador_fallos'] > 80:
-        tiempo = 0.5
-    elif st.session_state['contador_fallos'] > 60:
-        tiempo = 0.7   
-    elif st.session_state['contador_fallos'] > 40:
-        tiempo = 0.9
-    elif st.session_state['contador_fallos'] > 20:
-        tiempo = 1.3
-    elif st.session_state['contador_fallos'] < 10:
-        tiempo = 1.5
-    return tiempo
+
 if st.session_state.start==True:
-    time.sleep(tiempo())
+    if st.session_state['contador_fallos'] > 120:
+        time.sleep(0.1)
+    elif st.session_state['contador_fallos'] > 100:
+        time.sleep(0.3)
+    elif st.session_state['contador_fallos'] > 80:
+        time.sleep(0.5)
+    elif st.session_state['contador_fallos'] > 60:
+        time.sleep(0.7)   
+    elif st.session_state['contador_fallos'] > 40:
+        time.sleep(0.9)
+    elif st.session_state['contador_fallos'] > 20:
+        time.sleep(1.3)
+    elif st.session_state['contador_fallos'] < 10:
+        time.sleep(1.5)
     st.session_state['contador_fallos'] += 1
     st.rerun()
