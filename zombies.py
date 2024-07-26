@@ -121,5 +121,11 @@ if st.session_state.start==True:
         time.sleep(1.2)    
     elif st.session_state['contador_fallos'] < 150:
         time.sleep(1)
+    elif st.session_state['contador_fallos'] < 175:
+        time.sleep(0.8)
+    elif st.session_state['contador_fallos'] < 200:
+        time.sleep(0.6)
+    elif st.session_state['contador_fallos'] < 250:
+        time.sleep(0.4)
     st.session_state['contador_fallos'] += 1
     st.rerun()
